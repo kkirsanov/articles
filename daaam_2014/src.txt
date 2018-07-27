@@ -1,0 +1,48 @@
+
+\begin{frame}
+\frametitle{}
+
+% You can create overlays
+\begin{itemize}
+  \item using the \texttt{pause} command:
+  \begin{itemize}
+    \item First item.
+    \pause
+    \item Second item.
+  \end{itemize}
+  \item using overlay specifications:
+  \begin{itemize}
+    \item<3-> First item.
+    \item<4-> Second item.
+  \end{itemize}
+  \item using the general \texttt{uncover} command:
+  \begin{itemize}
+    \uncover<5->{\item First item.}
+    \uncover<6->{\item Second item.}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\section*{Summary}
+
+\begin{frame}
+\frametitle<presentation>{Summary}Alpha-UI,Alpha-UI,
+
+\begin{itemize}
+  \item The \alert{first main message} of your talk in one or two lines.
+\end{itemize}
+
+% The following outlook is optional.
+\vskip0pt plus.5fill
+\begin{itemize}
+  \item Outlook
+  \begin{itemize}
+    \item Something you haven't solved.
+    \item Something else you haven't solved.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+
+Decentralized Software Services (DSS) is a lightweight .

@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Sun Nov 23 15:55:53 MSK 2014
+markTmpDer=true
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=kirsanov2014.tex
+outputFile=kirsanov2014.pdf
+langSpell=en
+markDer=true
+srcDir=
