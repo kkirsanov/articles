@@ -1,0 +1,13 @@
+#TeXlipse project settings
+#Sun Oct 04 17:48:21 MSD 2009
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=python_robotics.tex
+outputFile=python_robotics.pdf
+langSpell=en
+markDer=true
+srcDir=
