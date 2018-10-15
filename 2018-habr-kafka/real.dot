@@ -1,0 +1,148 @@
+digraph kafka {
+
+  rankdir=TB
+  # каналы связи - прямоугольники
+
+  node [shape=box]
+  "transaction.income.end"
+  "transaction.payback.end"
+
+  "notificator.out2"
+  "notificator.response"
+  "ppmk.lp.request"
+  "ppmk.lp.subscribe.request"
+  "ppmk.lp.subscribe.status"
+  "smsgate.sms.out"
+  "statistics.aggregation.aggregation_request"
+  "invoice.created"
+  "transaction.payback.result"
+  "smsgate.sms.income"
+  "transaction.reject"
+  
+  # внешиний мир
+  node [shape=doubleoctagon]
+  partner
+  mts
+  beeline
+  megafon
+  tele2
+   
+  # компоненты - овалы
+  node [shape=oval]
+  api_adapter
+
+  statistics
+  ppmk
+  payme
+  lpmk
+  smsgate
+  notificator
+  validation
+  "gate-canceller"
+
+  #кластеры
+  subgraph cluster_gates_api {
+    label="gates_api"
+    gate_tele2; gate_mtsmoney_ext;
+  }
+  subgraph cluster_sms_route {
+    label="sms_route"
+    sms_route; sms_route_prefix_map;
+  }
+
+  ACID; ACID_api
+
+  # если забудем включить в список компонент или каналов - будет звезда
+  node [shape=star]
+
+
+
+  # список кто что слушает
+  "transaction.income.end" -> statistics
+  "transaction.income.end" -> lpmk
+  "transaction.income.end" -> ppmk
+  "transaction.income.end" -> payme
+  
+  "ppmk.lp.subscribe.request"->ppmk
+  "transaction.payback.end"->statistics
+
+  "ppmk.lp.subscribe.status"->lpmk
+
+  "smsgate.sms.out"->smsgate
+  "smsgate.sms.income"->sms_route
+  "smsgate.sms.income"->sms_route_prefix_map
+  "smsgate.sms.income"->ppmk
+
+  "ppmk.lp.request"->lpmk
+
+  "notificator.out2"->notificator
+
+  "statistics.aggregation.aggregation_request"->statistics
+  "statistics.aggregation.aggregation_request"->ACID
+  "transaction.reject"->ppmk
+
+  
+  # список кто куда пушит
+  gate_mtsmoney_ext->"smsgate.sms.out"
+
+  "gate-canceller"->"transaction.reject"
+
+  ACID->"transaction.income.end"
+  ACID->"transaction.payback.end"
+  ACID->"transaction.payback.result"
+  ACID->"notificator.out2"
+  ACID_api->"invoice.created"
+  smsgate->"smsgate.sms.income"
+  api_adapter->"smsgate.sms.out"
+  ppmk->"ppmk.lp.subscribe.status"
+  ppmk->"ppmk.lp.request"
+  ppmk->"smsgate.sms.out"
+  ppmk->"notificator.out2"
+  lpmk->"ppmk.lp.subscribe.request"
+  sms_route->"notificator.out2"
+  sms_route->"smsgate.sms.out"
+  statistics->"statistics.aggregation.aggregation_request"
+  payme->"notificator.out2"
+  gate_tele2->"smsgate.sms.out"
+
+  notificator->"notificator.response"
+  # внешний мир
+  partner->api_adapter
+  partner->ACID_api
+  notificator->partner
+  notificator->ppmk
+  mts->smsgate
+  beeline->smsgate
+  megafon->smsgate
+  tele2->smsgate
+  tele2->gate_tele2
+  mts->gate_mtsmoney_ext
+
+  smsgate -> mts
+  smsgate -> megafon
+  smsgate -> tele2
+  smsgate -> beeline
+
+  # список прямых взаимодействий без кафки
+  api_adapter->ppmk
+  ACID->ppmk
+  payme->ACID_api
+  ACID_api->ACID
+  ppmk->ACID_api
+  ppmk->mts
+  ppmk->megafon
+  ppmk->beeline
+  mts->ppmk
+  megafon->ppmk
+  beeline->ppmk
+
+  beeline->ACID
+  mts->ACID
+  megafon->ACID
+  tele2->ACID
+
+  sms_route_prefix_map->ACID_api
+  validation->ACID
+  validation->ACID_api
+
+}
