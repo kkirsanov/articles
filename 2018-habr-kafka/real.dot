@@ -40,16 +40,8 @@ digraph kafka {
   validation
   "gate-canceller"
 
-  #кластеры
-  subgraph cluster_gates_api {
-    label="gates_api"
-    gate_tele2; gate_mtsmoney_ext;
-  }
-  subgraph cluster_sms_route {
-    label="sms_route"
-    sms_route; sms_route_prefix_map;
-  }
-
+  gate_tele2; gate_mtsmoney_ext;
+  sms_route; sms_route_prefix_map;
   ACID; ACID_api
 
   # если забудем включить в список компонент или каналов - будет звезда
