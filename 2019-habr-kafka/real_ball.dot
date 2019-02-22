@@ -1,0 +1,119 @@
+digraph kafka {
+
+  rankdir=TB
+  # каналы связи - прямоугольники
+
+  node [shape=box]
+  
+  # внешиний мир
+  node [shape=doubleoctagon]
+  partner
+  mts
+  beeline
+  megafon
+  tele2
+   
+  # компоненты - овалы
+  node [shape=oval]
+  api_adapter
+
+  statistics
+  ppmk
+  payme
+  lpmk
+  smsgate
+  notificator
+  validation
+  "gate-canceller"
+
+  #кластеры
+  
+  gate_tele2; gate_mtsmoney_ext;
+  sms_route; sms_route_prefix_map;
+  
+  ACID; ACID_api
+
+  # если забудем включить в список компонент или каналов - будет звезда
+  node [shape=star]
+
+
+
+  # список кто что слушает
+ 
+
+  ppmk->lpmk
+
+  smsgate->sms_route
+  smsgate->sms_route_prefix_map
+  smsgate->ppmk
+
+  ppmk->lpmk
+
+
+  statistics->ACID
+  ACID->ppmk
+
+  
+  # список кто куда пушит
+  gate_mtsmoney_ext->smsgate
+
+  "gate-canceller"->ACID
+
+  ACID->statistics
+  ACID->ppmk
+  ACID->lpmk
+  ACID->payme
+  ACID->notificator
+  smsgate->sms_route
+  api_adapter->smsgate
+  ppmk->lpmk
+  ppmk->ppmk
+  ppmk->smsgate
+  ppmk->notificator
+  lpmk->ppmk
+  sms_route->notificator
+  sms_route->smsgate
+  statistics->statistics
+  payme->notificator
+  gate_tele2->smsgate
+
+  # внешний мир
+  partner->api_adapter
+  partner->ACID_api
+  notificator->partner
+  notificator->ppmk
+  mts->smsgate
+  beeline->smsgate
+  megafon->smsgate
+  tele2->smsgate
+  tele2->gate_tele2
+  mts->gate_mtsmoney_ext
+
+  smsgate -> mts
+  smsgate -> megafon
+  smsgate -> tele2
+  smsgate -> beeline
+
+  # список прямых взаимодействий без кафки
+  api_adapter->ppmk
+  ACID->ppmk
+  payme->ACID_api
+  ACID_api->ACID
+  ppmk->ACID_api
+  ppmk->mts
+  ppmk->megafon
+  ppmk->beeline
+  mts->ppmk
+  megafon->ppmk
+  beeline->ppmk
+
+  beeline->ACID
+  mts->ACID
+  megafon->ACID
+  tele2->ACID
+
+  sms_route_prefix_map->ACID_api
+  validation->ACID
+  validation->ACID_api
+
+}
