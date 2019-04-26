@@ -1,0 +1,235 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+\usetheme{Frankfurt}
+
+\setbeamercovered{transparent}
+}
+
+\usepackage[russian]{babel}
+\usepackage[utf8]{inputenc}
+
+
+\usepackage{mathptmx}
+\usepackage{graphics}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+
+\usepackage[T1]{fontenc}
+
+
+\title{Новая парадигма}
+
+%\subtitle{}
+
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+%\author{F.~Author\inst{1} \and S.~Another\inst{2}}
+\author{Кирсанов К.Б., Левинский Б.М., Прысев Е.А.}
+
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\institute[sensorika]
+{Институт новых образовательных технологий РГГУ.}
+
+\date{09.06.11 / XII Международный интерактивный форум образовательных
+технологий ''Дополняя реальность''. ''Робототехника, мехатроника
+и сенсорика на службе образования''}
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+%\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Содержание}
+\tableofcontents
+\end{frame}
+
+\section{Роботы в образовательной среде}
+\subsection{Роботы как учебные пособия и объекты лабораторных работ}
+\begin{frame}
+\frametitle{Роботы как учебные пособия и объекты лабораторных работ}
+Использование мобильных роботов в качестве учебных объектов повышает
+зинтересованность учащихся
+\\
+\begin{itemize}
+  \item<1> Решение реальных, а не учебных задач: навигация, обеспечение
+  взаимодейсвия с человеком, синтез речи, алгоритмы поиска, механика.
+  \item<1> Интрактивность, не доступная в моделях - любая ошибка становиться тут
+  же заметной
+  \item<1> Широта охватываемых задач, - от программирования и механики, до
+  лингвистики и дизайна
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Роботы как учебные пособия}
+\framesubtitle{Сопутсвующие проблемы}
+\begin{itemize}
+  \item<1> Роботов, как правило, гораздо меньше чем студетов
+  \item<1> Коллективный и распределенный доступ к роботам
+  \item<1> Высокая сложность робота, как объекта управления
+\end{itemize}
+
+\\ \\ \\
+Для преодоления этих сложностей созданы специализированные
+программно-аппаратные комплексы, скрывающие ненужные в рамках
+конкретного курса тонкости.
+
+\end{frame}
+
+\subsection{Системы программирования}
+\begin{frame}
+\frametitle{Системы программирования}
+\begin{itemize}
+\item<1> \textbf{Microsoft Robotics Studi}o \textit{http://msdn.microsoft.com/en-us/robotics/default.aspx}
+\item<1> \textbf{Player Project} \textit{http://playerstage.sourceforge.net}
+\item<1> \textbf{ORCA2} \textit{http://orca-robotics.sourceforge.net/orca/index.html}
+\item<1> \textbf{LAAS/GenoM} \textit{https://softs.laas.fr/openrobots/wiki/genom}
+\item<1> \textbf{Marie} \textit{http://marie.sourceforge.net}
+\item<1> \textbf{URBI} \textit{http://www.urbiforge.com}
+\item<1> \textbf{Webots} \textit{http://www.cyberbotics.com}
+\item<1> \textbf{RoboJRE} \textit{http://www.ridgesoft.com/robojde/robojde.htm}
+\item<1> \textbf{OROCOS} \textit{http://www.orocos.org}
+\item<1> \textbf{LEGO, iRobot, ...}
+\end{itemize}
+\end{frame}
+
+
+
+\subsection{Распределенная среда}
+\begin{frame}
+\frametitle{Распределенная среда}
+При управлении и программировании мобильных роботов требуется обеспечыить несколько видов взаимодействия:
+\begin{itemize}
+\item<1> робот <-> пульт
+\item<1> робот <-> робот
+\end{itemize}
+При чем все они могут быть разнесены в пространстве: студент управляет роботом
+в лаборатории из дома и во времени: задержки при связи Москва-Владивосток могут
+достигать нескольких секунд.
+\end{frame}
+
+
+\section{Особенности программирования в робототехнике}
+\subsection{Технологии программирования}
+\begin{frame}
+\frametitle{Технологии программирования}
+\begin{itemize}
+\item<1> Программируются готовые, выпускаемые серийно роботы и мехатронные
+устройства
+\item<2> \alert{Роботы разрабатываются самостоятельно и меняются во времени} 
+\item<1-> Язык программирования - С,С++,Java, Python, C\#
+\item<1-> Управляющее ПО конструируется из распределенных
+компонент(модулей/агентов/сервисов).
+\item<1-> Взаимодействие программных компонент через сеть Ethernet и RPC
+(Remote Procedure Call, удаленный вызов процедур)
+\end{itemize}
+\end{frame}
+
+
+\subsection{Недостатки традиционного подхода}
+\begin{frame}
+\frametitle{Недостатки традиционного подхода}
+\begin{itemize}
+  \item<1-> RPC подразумевает вызов уже существующих функций, в то время как
+  процесс разработки сопровождается их созданием. Таким образом появляется
+  необходимость постоянного обновления протокола и программ бортовой ЭВМ, а 
+  обновление программ бортовой ЭВМ требует довольно длительной
+  процедуры ``перезагрузки``  
+  \item<1->Программы бортовой ЭВМ реализованы на компилируемом языке и
+  любое обновление требует их повторной компиляции
+  \item<1-> Традиционно используемые языки программирования неудобны для частой
+  модернизации программ
+\end{itemize}
+\end{frame}
+
+\section{Предлагаемый подход}
+\begin{frame}
+\frametitle{Предлагаемый подход}
+\begin{itemize}
+  \item<1>Перейти от использования компилируемого языка со статической
+  типизацией (С++) к динамическому интерпретируемому языку
+  \item<1>Обеспечить возможность изменять ПО бортовой ЭВМ без необходимости
+  перезагрузки и, по-возможности, остановки. Разработать соответствующий
+  инструментарий
+  \item<1>Упростить процесс развертывания ПО на бортовой ЭВМ
+  \item<1>Реализовать возможность распределения между бортовой ЭВМ и пультом
+  управления не только модулей, но и отдельных строчек программного кода 
+\end{itemize}
+\end{frame}
+
+\subsection{Интерпретируемый динамический язык}
+\begin{frame}
+\frametitle{Интерпретируемый динамический язык}
+Использование в качестве основного языка программирования 
+интерпретируемого динамического языка позволяет:
+\begin{itemize}
+  \item<1-> Устранить необходимость в файлах конфигурации.   
+  \item<1-> Устранить этап компиляции для ПО бортовой ЭВМ
+  \item<1-> Легко вносить незапланированные изменения в ПО бортовой ЭВМ в
+  полевых условиях
+\end{itemize}
+\pause
+\alert{Производительность, по сравнению с языком С, хуже в 1-500 раз}
+(компенсируется благодаря использованию быстрых математических библиотек)
+\end{frame}
+
+\subsection{Тьюринг-полный протокол}
+\begin{frame}
+\frametitle{Тьюринг-полный протокол}
+\begin{itemize}
+  \item<1> Изменение аппаратной составляющей робота или мехатронного устройства
+  требует соответствующего изменения и программной составляющей. Как правило, за
+  этим также следует изменение управляющего протокола (т.е. добавление новых
+  комманд или удаление существующих)
+\item<1> Протокол управления это, фактически, язык программирования, и его можно
+оценить с точки зрения полноты по Тьюрингу
+\item<1> Вместо постоянного наращивания (вслед за аппаратной составляющей)
+языка-протокола, имеет смысл сразу реализовать тьюринг-полный протокол.
+\end{itemize}
+\end{frame}
+
+\subsection{Язык Python}
+\begin{frame}
+\frametitle{Язык Python}
+\framesubtitle{Почему Python, а не ruby/perl/tcl/lua/scala/\ldots}
+\begin{itemize}
+	\item<1>Простой и компактный синтаксис облегчает не только программирование, но
+	и кодогенерацию
+	\item<1>Простота интеграции с готовыми системами, созданными на С
+	\item<1>Распространенность. Python используется более чем в 1400
+	программах, входящих в комплект поставки Linux Ubuntu
+	\item<1> Наличие открытых и эффективных сторонних библиотек: mathplotlib
+	(графопостроитель), scipy (пакет математических библиотек) и др.,
+	позволяющих почти полностью воспроизвести возможности mathlab в составе разрабатываемого ПО
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\begin{center}
+\begin{LARGE}
+Спасибо за внимание
+\end{LARGE}
+(небольшое видео)
+\end{center}
+\end{frame}
+
+\end{document}
