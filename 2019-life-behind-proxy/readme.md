@@ -24,10 +24,26 @@ ftp_proxy=
 no_proxy=localhost,127.0.0.1
 ```
 5. Run: ```docker run -it --env-file ./proxy.txt ubuntu```
-6. Sometimes Credential Manager buggy. In this case go ```Control Panel\User Accounts\Credential Manager```
+6. Sometimes Credential Manager are buggy. In this case go ```Control Panel\User Accounts\Credential Manager```
 and in ```Windows Credentionals``` remove all records with ```dokcer```
 7. In docker settings check "Expose daemon on tcp://localhost:2375 without TLS"
 
-## Install Haskell
-1. Download an install Haskell Platform - https://www.haskell.org/platform/
-2. Copy```C:\Program Files\Haskell Platform\8.6.5\mingw\bin\libwinpthread-1.dll``` into pthread.dll in the same folder
+## How to setup gitlab behind proxy
+Change ```C:/users/User.Name/.gitconfig``` to 
+```bash
+[user]
+    email = User.Name@rompany.com
+    name = User Name
+[http]
+    proxy = http://your.proxy.addres
+
+[https]
+    proxy = http://your.proxy.addres
+    sslVerify = false
+```
+
+Sometimes Credential Manager are buggy. In this case go ```Control Panel\User Accounts\Credential Manager```
+and in ```Windows Credentionals``` remove all records with ```gitlab```
+
+## How to fix Haskell`s pthread problem
+Copy```C:\Program Files\Haskell Platform\8.6.5\mingw\bin\libwinpthread-1.dll``` into pthread.dll in the same folder
