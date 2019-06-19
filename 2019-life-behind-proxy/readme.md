@@ -3,9 +3,9 @@
 
 1. Enable Windows Linux subsystem(WLS) - Win+S->"Turn windows Feautures On and Off"->Windows Linux subsystem
 2. Install Ubuntu from Microsoft Store
-3. ```echo "Acquire::http::Proxy \"http://your.proxy.addres:80\";" | sudo tee -a /etc/apt/apt.conf.d/proxy.conf```
-4. ```echo "http_proxy=http://your.proxy.addres.net" | sudo tee -a /etc/enviroment```
-5. ```echo "https_proxy=http://your.proxy.addres.net" | sudo tee -a /etc/enviroment```
+3. ```echo "Acquire::http::Proxy \"http://your.proxy.address\";" | sudo tee -a /etc/apt/apt.conf.d/proxy.conf```
+4. ```echo "http_proxy=http://your.proxy.address.net" | sudo tee -a /etc/enviroment```
+5. ```echo "https_proxy=http://your.proxy.address.net" | sudo tee -a /etc/enviroment```
 6. ```sudo apt install python3 python3-pip```
 
 
@@ -18,8 +18,8 @@
 4. Check proxy settings - правая ПКМ на иконке в Tray->Docker->settings->Proxy
 5. Save environment variables into proxy.txt in home folder
 ```
-http_proxy=http://your.proxy.addres
-https_proxy=http://your.proxy.addres
+http_proxy=http://your.proxy.address
+https_proxy=http://your.proxy.address
 ftp_proxy=
 no_proxy=localhost,127.0.0.1
 ```
@@ -35,10 +35,10 @@ Change ```C:/users/User.Name/.gitconfig``` to
     email = User.Name@rompany.com
     name = User Name
 [http]
-    proxy = http://your.proxy.addres
+    proxy = http://your.proxy.address
 
 [https]
-    proxy = http://your.proxy.addres
+    proxy = http://your.proxy.address
     sslVerify = false
 ```
 
