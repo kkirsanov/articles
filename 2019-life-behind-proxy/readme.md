@@ -36,10 +36,11 @@ Change ```C:/users/User.Name/.gitconfig``` to
     name = User Name
 [http]
     proxy = http://your.proxy.address
-
 [https]
     proxy = http://your.proxy.address
     sslVerify = false
+[core]
+    autocrlf = true
 ```
 
 Sometimes Credential Manager are buggy. In this case go ```Control Panel\User Accounts\Credential Manager```
