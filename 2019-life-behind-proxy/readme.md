@@ -15,7 +15,7 @@
 1. Enable Hyper: Win+S->"Turn windows Features On and Off"->HyperV
 2. Register on docker hub - https://hub.docker.com/ and install  Docker Desktop
 3. During install uncheck "Create desktop shortcut".
-4. Check proxy settings - правая ПКМ на иконке в Tray->Docker->settings->Proxy
+4. Check proxy settings - Tray->Docker->settings->Proxy
 5. Save environment variables into proxy.txt in home folder
 ```
 http_proxy=http://your.proxy.address
@@ -27,6 +27,7 @@ no_proxy=localhost,127.0.0.1
 6. Sometimes Credential Manager are buggy. In this case go ```Control Panel\User Accounts\Credential Manager```
 and in ```Windows Credentionals``` remove all records with ```dokcer```
 7. In docker settings check "Expose daemon on tcp://localhost:2375 without TLS"
+8. You can pass the HTTPS_PROXY to building stage using build-args: ```docker-compose build --build-arg HTTP_PROXY=http://xxx```
 
 ## How to setup gitlab behind proxy
 Change ```C:/users/User.Name/.gitconfig``` to 
